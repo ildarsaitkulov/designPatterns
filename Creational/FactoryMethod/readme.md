@@ -3,17 +3,14 @@
 Иными словами родительский (абстрактный) класс делегирует создание объекта дочернему классу.
 
 ```php
-abstract class Dialog
+abstract class TransportCompany
 {
-    public function render()
-    {
-        $button = $this->createButton();
-        $button->render();
-        $button->onClick(function () {
-            echo 'click' . PHP_EOL;
-        });
-    }
 
-    abstract public function createButton(): Button;
+    public function deliver(): void
+    {
+        $this->createVehicle()->go();
+    }
+    
+    abstract public function createVehicle(): Vehicle;
 }
 ```

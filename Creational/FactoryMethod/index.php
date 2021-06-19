@@ -3,21 +3,21 @@
 use Creational\AbstractFactory\Application;
 use Creational\AbstractFactory\MacFactory;
 use Creational\AbstractFactory\WinFactory;
+use Creational\FactoryMethod\AirTransportCompany;
+use Creational\FactoryMethod\LandTransportCompany;
 use Creational\FactoryMethod\WebDialog;
 use Creational\FactoryMethod\WindowsDialog;
 
 require_once  __DIR__. '/../../autoload.php';
 
 
-$os = 'windows';
-//$os = 'web';
+$deliverBy = 'air';
+//$deliverBy = 'land';
 
-if ($os === 'windows') {
-    $dialog  = new WindowsDialog();
+if ($deliverBy === 'air') {
+    $transportCompany = new AirTransportCompany();
 } else {
-    $dialog  = new WebDialog();
+    $transportCompany = new LandTransportCompany();
 }
 
-
-$dialog->render();
-
+$transportCompany->deliver();
