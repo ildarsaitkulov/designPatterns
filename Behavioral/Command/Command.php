@@ -4,5 +4,10 @@ namespace Behavioral\Command;
 
 interface Command
 {
-    public function execute(): void;
+
+    public function execute();
+    
+    public function undo();
+    
+    public function redo();
 }

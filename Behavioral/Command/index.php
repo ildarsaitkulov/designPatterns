@@ -1,20 +1,15 @@
 <?php
 
-use Behavioral\Command\Invoker;
-use Behavioral\Command\Receiver;
-use Behavioral\Command\SimpleCommand;
-use Behavioral\Command\ComplexCommand;
+use Behavioral\Command\Bulb;
+use Behavioral\Command\RemoteControl;
+use Behavioral\Command\TurnOff;
+use Behavioral\Command\TurnOn;
 
 require_once  __DIR__. '/../../autoload.php';
 
-/**
- * Клиентский код может параметризовать отправителя любыми командами.
- */
-$invoker = new Invoker();
-$invoker->setOnStart(new SimpleCommand("Say Hi!"));
+$bulb = new Bulb();
 
-$receiver = new Receiver();
+$remoteControl = new RemoteControl();
 
-$invoker->setOnFinish(new ComplexCommand($receiver, "Send email", "Save report"));
-
-$invoker->doSomethingImportant();
+$remoteControl->submit(new TurnOn($bulb));
+$remoteControl->submit(new TurnOff($bulb));
