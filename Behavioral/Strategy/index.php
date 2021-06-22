@@ -1,21 +1,13 @@
 <?php
 
-use Behavioral\Strategy\ConcreteStrategyA;
-use Behavioral\Strategy\ConcreteStrategyB;
-use Behavioral\Strategy\Context;
+use Behavioral\Strategy\Navigator;
+use Behavioral\Strategy\PublicTransport;
+use Behavioral\Strategy\Walking;
 
 require_once  __DIR__. '/../../autoload.php';
 
-/**
- * Клиентский код выбирает конкретную стратегию и передаёт её в контекст. Клиент
- * должен знать о различиях между стратегиями, чтобы сделать правильный выбор.
- */
-$context = new Context(new ConcreteStrategyA());
-echo "Client: Strategy is set to normal sorting.\n";
-$context->doSomeBusinessLogic();
+$navigator = new Navigator(new PublicTransport());
+$navigator->buildRoute(1,2);
 
-echo "\n";
-
-echo "Client: Strategy is set to reverse sorting.\n";
-$context->setStrategy(new ConcreteStrategyB());
-$context->doSomeBusinessLogic();
+$navigator = new Navigator(new Walking());
+$navigator->buildRoute(1,2);
