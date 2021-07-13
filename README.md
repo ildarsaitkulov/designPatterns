@@ -1,1 +1,1 @@
-# designPatternsNew
+# designPatterns
